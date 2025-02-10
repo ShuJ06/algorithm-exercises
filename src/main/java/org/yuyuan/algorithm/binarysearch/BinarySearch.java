@@ -6,7 +6,7 @@ public class BinarySearch {
      * 二分查找基础版
      *
      * @param array  待查询数组
-     * @param target 目标数组
+     * @param target 目标数
      * @return 查询到返回数组下标，未查询到返回-1
      */
     public static int binarySearchBasic(int[] array, int target) {
@@ -35,6 +35,31 @@ public class BinarySearch {
             }
         }
 
+        return -1;
+    }
+
+    /**
+     * 二分查找修改版
+     *
+     * @param array  待查询数组
+     * @param target 目标值
+     * @return 查询到返回数组下标，未查询到返回-1
+     */
+    public static int binarySearchAlternative(int[] array, int target) {
+        int i = 0;
+        int j = array.length; // 边界条件修改
+
+        while (i < j) {
+            int mid = (i + j) >>> 1;
+
+            if (target == array[mid]) {
+                return mid;
+            } else if (target < array[mid]) {
+                j = mid;
+            } else {
+                i = mid + 1;
+            }
+        }
         return -1;
     }
 }
