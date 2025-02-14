@@ -4,10 +4,12 @@ public class BinarySearch {
 
     /**
      * 二分查找基础版
+     * 平均时间复杂度: O(logN)
      *
-     * @param array  待查询数组
-     * @param target 目标数
-     * @return 查询到返回数组下标，未查询到返回-1
+     * @param array  待查询(已按升序排列的)数组
+     * @param target 目标值
+     * @return target所在数组索引;
+     * 未查询到返回-1;
      */
     public static int binarySearchBasic(int[] array, int target) {
         int i = 0;
@@ -40,8 +42,9 @@ public class BinarySearch {
 
     /**
      * 二分查找修改版
+     * 平均时间复杂度: O(logN)
      *
-     * @param array  待查询数组
+     * @param array  待查询(已按升序排列的)数组
      * @param target 目标值
      * @return 查询到返回数组下标，未查询到返回-1
      */
@@ -61,5 +64,88 @@ public class BinarySearch {
             }
         }
         return -1;
+    }
+
+    /**
+     * 二分查平衡版
+     * 平均时间复杂度: Θ(logN)
+     *
+     * @param array 待查询(已按升序排列的)数组
+     * @param target 目标值
+     * @return 查询到返回数组下标，未查询到返回-1
+     */
+    public static int binarySearchBalanced(int[] array, int target) {
+        int i = 0;
+        int j = array.length;
+
+        // 当剩余元素个数大于1时，继续二分查找
+        while (1 < j - i) {
+            int mid = (i + j) >>> 1;
+            if (target < array[mid]) {
+                j = mid;
+            } else {
+                i = mid;
+            }
+        }
+
+        return (array[i] == target) ? i : -1;
+    }
+
+    /**
+     * 查找目标标值出现的最左侧索引
+     *
+     * @param array  待查询(已按升序排列的)数组
+     * @param target 目标值
+     * @return 查询到返回数组下标，未查询到返回-1
+     */
+    public static int binarySearchLeftMost(int[] array, int target) {
+        int i = 0;
+        int j = array.length - 1;
+        int candidate = -1;
+
+        while (i <= j) {
+            int mid = (i + j) >>> 1;
+
+            if (target == array[mid]) {
+                candidate = mid;
+                j = mid - 1;
+            }
+
+            if (target < array[mid]) {
+                j = mid - 1;
+            }
+
+            if (array[mid] < target) {
+                i = mid + 1;
+            }
+        }
+
+        return candidate;
+    }
+
+    /**
+     * 查找目标值出现的最右索引
+     *
+     * @param array  待查询(已按升序排列的)数组
+     * @param target 目标值
+     * @return <= target 的最靠右的值的索引
+     */
+    public static int binarySearchRightMost(int[] array, int target) {
+        int i = 0;
+        int j = array.length - 1;
+
+        while (i <= j) {
+            int mid = (i + j) >>> 1;
+
+            if (target < array[mid]) {
+                j = mid - 1;
+            }
+
+            if (array[mid] <= target) {
+                i = mid + 1;
+            }
+        }
+
+        return i - 1;
     }
 }
