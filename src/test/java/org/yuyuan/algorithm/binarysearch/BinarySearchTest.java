@@ -3,6 +3,8 @@ package org.yuyuan.algorithm.binarysearch;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.function.Supplier;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BinarySearchTest {
@@ -37,6 +39,8 @@ class BinarySearchTest {
         assertEquals(1, BinarySearch.binarySearchBalanced(array, 2));
 
         assertEquals(-1, BinarySearch.binarySearchBalanced(array, 11));
+        Supplier<Double> supplier1 = Math::random;
+        Supplier<Double> supplier2 = () -> Math.random();
     }
 
     @Test
