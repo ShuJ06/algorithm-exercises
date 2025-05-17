@@ -38,6 +38,38 @@ public class SinglyLinkedList implements Iterable<Integer> {
     }
 
     /**
+     * 查找最后一个节点
+     *
+     * @return last node
+     */
+    public Node findLast() {
+        if (head == null) {
+            return null;
+        }
+
+        Node p = head;
+        while (p.next != null) {
+            p = p.next;
+        }
+        return p;
+    }
+
+    /**
+     * 向列表末尾增加元素
+     *
+     * @param value value
+     */
+    public void addLast(int value) {
+        Node last = findLast();
+        if (last == null) {
+            addFirst(value);
+            return;
+        }
+
+        last.next = new Node(value, null);
+    }
+
+    /**
      * 向指定index位置插入值
      * @param index 插入位置
      * @param value 待插入的值
@@ -64,6 +96,10 @@ public class SinglyLinkedList implements Iterable<Integer> {
         head = head.next;
     }
 
+    /**
+     * 删除指定index位置的节点
+     * @param index index
+     */
     public void remove(int index) {
         if(index == 0) {
             removeFirst();
@@ -74,6 +110,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
         if(prev == null) {
             throw new IndexOutOfBoundsException();
         }
+
         Node removed = prev.next;
         if(removed == null) {
             throw new IndexOutOfBoundsException();
@@ -94,36 +131,9 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
     }
 
-    private Node findLast() {
-        if (head == null) {
-            return null;
-        }
-
-        Node p = head;
-        while (p.next != null) {
-            p = p.next;
-        }
-        return p;
-    }
-
-    /**
-     * 向列表头增加元素
-     *
-     * @param value value
-     */
-    public void addLast(int value) {
-        Node last = findLast();
-        if (last == null) {
-            addFirst(value);
-            return;
-        }
-
-        last.next = new Node(value, null);
-    }
-
     private Node findNode(int index) {
         if (index < 0) {
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException();
         }
 
         int i = 0;
