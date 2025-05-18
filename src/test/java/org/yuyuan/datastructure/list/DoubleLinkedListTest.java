@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 
-class DoubleLinkedListSentinelTest {
+class DoubleLinkedListTest {
 
     @Test
     void addFirst() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -21,7 +21,7 @@ class DoubleLinkedListSentinelTest {
 
     @Test
     void addLast() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
@@ -32,7 +32,7 @@ class DoubleLinkedListSentinelTest {
 
     @Test
     void insert() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.insert(0, 1);
         list.insert(1, 2);
         list.insert(2, 3);
@@ -42,7 +42,7 @@ class DoubleLinkedListSentinelTest {
 
     @Test
     void removeFirst() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
@@ -53,7 +53,7 @@ class DoubleLinkedListSentinelTest {
 
     @Test
     void removeLast() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
@@ -64,7 +64,7 @@ class DoubleLinkedListSentinelTest {
 
     @Test
     void remove() {
-        DoubleLinkedListSentinel list = new DoubleLinkedListSentinel();
+        DoubleLinkedList list = new DoubleLinkedList();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);

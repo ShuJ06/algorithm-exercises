@@ -7,26 +7,17 @@ import java.util.function.Consumer;
  * 单向链表
  */
 public class SinglyLinkedList implements Iterable<Integer> {
-    private Node head = null;
+     static class Node {
+        public int value;
+        public Node next;
 
-    @Override
-    public Iterator<Integer> iterator() {
-        return new Iterator<>() {
-            Node p = head;
-
-            @Override
-            public boolean hasNext() {
-                return p != null;
-            }
-
-            @Override
-            public Integer next() {
-                int value = p.value;
-                p = p.next;
-                return value;
-            }
-        };
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
     }
+
+    private Node head = null;
 
     /**
      * 向列表头增加元素
@@ -42,7 +33,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      *
      * @return last node
      */
-    public Node findLast() {
+    private Node findLast() {
         if (head == null) {
             return null;
         }
@@ -118,19 +109,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
         prev.next = removed.next;
     }
 
-    /**
-     * 遍历
-     *
-     * @param consumer consumer
-     */
-    public void loop(Consumer<Integer> consumer) {
-        Node p = head;
-        while (p != null) {
-            consumer.accept(p.value);
-            p = p.next;
-        }
-    }
-
     private Node findNode(int index) {
         if (index < 0) {
             throw new IllegalArgumentException();
@@ -159,5 +137,37 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
 
         return target.value;
+    }
+
+    /**
+     * 遍历
+     *
+     * @param consumer consumer
+     */
+    public void loop(Consumer<Integer> consumer) {
+        Node p = head;
+        while (p != null) {
+            consumer.accept(p.value);
+            p = p.next;
+        }
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            Node p = head;
+
+            @Override
+            public boolean hasNext() {
+                return p != null;
+            }
+
+            @Override
+            public Integer next() {
+                int value = p.value;
+                p = p.next;
+                return value;
+            }
+        };
     }
 }

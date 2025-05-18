@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 /**
- * 双向链表
+ * 双向链表（带哨兵）
  */
-public class DoubleLinkedListSentinel implements Iterable<Integer>{
+public class DoubleLinkedList implements Iterable<Integer>{
     static class Node {
         Node prev;
         int value;
@@ -28,7 +28,7 @@ public class DoubleLinkedListSentinel implements Iterable<Integer>{
     private final Node head;// 头部哨兵
     private final Node tail;// 尾部哨兵
 
-    public DoubleLinkedListSentinel() {
+    public DoubleLinkedList() {
         head = new Node(null, Integer.MIN_VALUE, null);
         tail = new Node(head, Integer.MAX_VALUE, null);
         head.next = tail;

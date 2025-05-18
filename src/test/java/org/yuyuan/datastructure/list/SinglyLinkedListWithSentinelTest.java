@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-class SinglyLinkedListSentinelTest {
+class SinglyLinkedListWithSentinelTest {
 
     @Test
     void addFirst() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -25,7 +25,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void insert() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.insert(0, 1);
         list.insert(1, 2);
         list.insert(2, 3);
@@ -37,7 +37,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void removeFirst() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -48,7 +48,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void remove() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -60,7 +60,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void loop() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -70,7 +70,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void addLast() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
@@ -82,7 +82,7 @@ class SinglyLinkedListSentinelTest {
 
     @Test
     void get() {
-        SinglyLinkedListSentinel list = new SinglyLinkedListSentinel();
+        SinglyLinkedListWithSentinel list = new SinglyLinkedListWithSentinel();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);

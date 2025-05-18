@@ -6,27 +6,18 @@ import java.util.function.Consumer;
 /**
  * 带哨兵单向链表
  */
-public class SinglyLinkedListSentinel implements Iterable<Integer> {
-    private final Node head = new Node(Integer.MAX_VALUE, null);
+public class SinglyLinkedListWithSentinel implements Iterable<Integer> {
+      static class Node {
+        public int value;
+        public Node next;
 
-    @Override
-    public Iterator<Integer> iterator() {
-        return new Iterator<>() {
-            Node p = head.next;
-
-            @Override
-            public boolean hasNext() {
-                return p != null;
-            }
-
-            @Override
-            public Integer next() {
-                int value = p.value;
-                p = p.next;
-                return value;
-            }
-        };
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
     }
+
+    private final Node head = new Node(Integer.MAX_VALUE, null);
 
     /**
      * 向列表头增加元素
@@ -76,19 +67,6 @@ public class SinglyLinkedListSentinel implements Iterable<Integer> {
         prev.next = removed.next;
     }
 
-    /**
-     * 遍历
-     *
-     * @param consumer consumer
-     */
-    public void loop(Consumer<Integer> consumer) {
-        Node p = head.next;
-        while (p != null) {
-            consumer.accept(p.value);
-            p = p.next;
-        }
-    }
-
     private Node findLast() {
         Node p = head;
         while (p.next != null) {
@@ -136,5 +114,37 @@ public class SinglyLinkedListSentinel implements Iterable<Integer> {
         }
 
         return target.value;
+    }
+
+    /**
+     * 遍历
+     *
+     * @param consumer consumer
+     */
+    public void loop(Consumer<Integer> consumer) {
+        Node p = head.next;
+        while (p != null) {
+            consumer.accept(p.value);
+            p = p.next;
+        }
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            Node p = head.next;
+
+            @Override
+            public boolean hasNext() {
+                return p != null;
+            }
+
+            @Override
+            public Integer next() {
+                int value = p.value;
+                p = p.next;
+                return value;
+            }
+        };
     }
 }
