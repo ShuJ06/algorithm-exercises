@@ -90,4 +90,15 @@ class SinglyLinkedListTest {
 
         Assertions.assertIterableEquals(List.of(1,2,4), list);
     }
+
+    @Test
+    void recursionLoop() {
+        SinglyLinkedList list = getIntegersList();
+
+        list.recursionLoop(value -> {
+            System.out.println("Before" + value);
+        }, value -> {
+            System.out.println("After" + value);
+        });
+    }
 }

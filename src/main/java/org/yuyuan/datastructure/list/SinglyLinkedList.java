@@ -152,6 +152,22 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
     }
 
+    private void recursion(Node node, Consumer<Integer> before, Consumer<Integer> after) {
+        if (node == null) {
+            return;
+        }
+        before.accept(node.value);
+        recursion(node.next, before, after);
+        after.accept(node.value);
+    }
+
+    /**
+     * 递归遍历
+     */
+    public void recursionLoop(Consumer<Integer> before, Consumer<Integer> after) {
+        recursion(head, before, after);
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
