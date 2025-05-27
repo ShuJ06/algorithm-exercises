@@ -51,4 +51,14 @@ class FactorialTest {
         assertEquals(8, Factorial.fibonacci(6));
         assertEquals(13, Factorial.fibonacci(7));
     }
+
+    @Test
+    void fibonacciWithMemo() {
+        assertEquals(13, Factorial.fibonacciWithMemo(7));
+        assertEquals(21, Factorial.fibonacciWithMemo(8));
+        assertEquals(34, Factorial.fibonacciWithMemo(9));
+        assertEquals(55, Factorial.fibonacciWithMemo(10));
+        assertEquals(89, Factorial.fibonacciWithMemo(11));
+        assertEquals(144, Factorial.fibonacciWithMemo(12));
+    }
 }

@@ -1,5 +1,7 @@
 package org.yuyuan.algorithm.recursion;
 
+import java.util.Arrays;
+
 public class Factorial {
     /**
      * 使用递归求解阶乘
@@ -85,5 +87,29 @@ public class Factorial {
             return 1;
         }
         return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    /**
+     * 斐波那契数列第n项（使用“剪枝”）
+     *
+     * @param n 第n项
+     * @return 第n项的值
+     */
+    public static int fibonacciWithMemo(int n) {
+        int[] cache = new int[n + 1];
+        Arrays.fill(cache, -1);
+        cache[0] = 0;
+        cache[1] = 1;
+
+        return fibonacci(n, cache);
+    }
+
+    private static int fibonacci(int n, int[] cache) {
+        if (cache[n] != -1) {
+            return cache[n];
+        }
+
+        cache[n] = fibonacci(n - 1, cache) + fibonacci(n - 2, cache);
+        return cache[n];
     }
 }
