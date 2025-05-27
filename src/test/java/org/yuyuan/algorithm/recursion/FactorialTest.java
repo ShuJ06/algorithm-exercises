@@ -39,4 +39,16 @@ class FactorialTest {
         Factorial.bubbleSort(arr);
         assertArrayEquals(expected, arr);
     }
+
+    @Test
+    void fibonacci() {
+        assertEquals(0, Factorial.fibonacci(0));
+        assertEquals(1, Factorial.fibonacci(1));
+        assertEquals(1, Factorial.fibonacci(2));
+        assertEquals(2, Factorial.fibonacci(3));
+        assertEquals(3, Factorial.fibonacci(4));
+        assertEquals(5, Factorial.fibonacci(5));
+        assertEquals(8, Factorial.fibonacci(6));
+        assertEquals(13, Factorial.fibonacci(7));
+    }
 }
