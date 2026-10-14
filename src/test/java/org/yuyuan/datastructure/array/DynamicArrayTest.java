@@ -16,12 +16,15 @@ class DynamicArrayTest {
             // 测试扩容
             assertEquals(i + 1, dynamicArray.size());
         }
-        for (int i = 0; i < 100; i++) {
+        // 删除时应从后往前遍历：删除会使元素整体左移，
+        // 若从前向后 remove(i)，下标 i 会指向被移动后的错误元素（本例中即期望值被重复跳过）
+        int curSize = dynamicArray.size();
+        for (int index = curSize - 1; index >= 0; index--) {
             // 测试删除
-            dynamicArray.remove(i);
-            assertEquals(100 - i - 1, dynamicArray.get(i));
-            // 测试删除
-            assertEquals(100 - i - 1, dynamicArray.size());
+            dynamicArray.remove(index);
+            assertEquals(100 - index, dynamicArray.get(index));
+            // 测试删除后的规模
+            assertEquals(index, dynamicArray.size());
         }
     }
 
